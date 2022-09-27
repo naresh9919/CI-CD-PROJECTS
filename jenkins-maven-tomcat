@@ -3,6 +3,8 @@
 
 # Install Jenkins on AWS EC2
 
+source code : https://github.com/ynareshbabu/war-file--tomcat.git
+
 ### Prerequisites
 1. EC2 Instance 
    - With Internet Access
@@ -136,7 +138,9 @@ id : tomcat-user
 descripition : tomcat-username-password
 click on add
 
-DEPLOY WARFILE ON TOMCAT USING TOMCAT
+                DEPLOY WARFILE ON TOMCAT USING TOMCAT
+
+source code : https://github.com/ynareshbabu/war-file--tomcat.git
 
 go to the jenkins--> new item --> item name : deploying war file
 select maven project --> ok
