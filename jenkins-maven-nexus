@@ -167,7 +167,7 @@ go to the console output and search for (building)
 
 Building jar: /var/lib/jenkins/workspace/jenkins-maven-nexus/target/maven-jar-sample-1.0-SNAPSHOT.jar
 
-copy the jar file path and seelect the job and configure --> paste on file : **/*.jar
+copy the jar file path and select the job and configure --> paste on file : **/*.jar
 
 Buildnow
 
