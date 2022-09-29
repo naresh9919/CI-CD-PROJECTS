@@ -107,12 +107,19 @@ Change host name (hostname ansible-control-node)
     conform password : ansadmin
 # usermod -aG docker dockeradmin
 
-password less connection-beetween ansible and docker instance
-
-# sudo su – ansadmin
-cd /opt
+# cd /opt
 # mkdir docker
 # chown –R ansadmin:ansadmin /opt/docker
+# chown –R ansadmin:ansadmin /etc/ansible/hosts
+# vi /etc/ansible/hosts
+( remove # this is the default ansible hosts file )
+# [all_hosts]
+# docker server IP address  (:wq!)
+
+# password less connection-beetween ansible and docker instance
+
+# sudo su – ansadmin
+
 # ssh-keygen
    ls –al
 # cd .ssh
@@ -126,15 +133,9 @@ cd /opt
 (yes and give password)
      added one key (that is localhost)
 # ansible all –m ping   (it will ping successfully )
- If it is not ping then we have to give permissions for that
-# vi /etc/ansible/hosts
-( remove # this is the default ansible hosts file )
-# [all_hosts]
-# docker server IP address  (:wq!)
-# chown –R ansadmin:ansadmin /etc/ansible/hosts
-# ansible all –m ping   (it will ping successfully )
 
-Docker
+
+                                     DOCKER INSTALLATION
 Docker-installation on ansible and docker instance
 Install docker and start docker services
 
@@ -152,7 +153,9 @@ Install docker and start docker services
    docker --version
 # service docker start
 # service docker status
-        Create a user called dockeradmin
+        
+	Create a user called dockeradmin
+
 # useradd ansadmin
 # passwd ansadmin
 # new password : ansadmin
@@ -181,13 +184,15 @@ Go to the Github --> select source code --> hosts --> localhost --> docker IP (p
 # docker login
    user name and password (dockerhub credentials)
 login successful 
-Jenkins-job (Maven Project)
+
+
+                     Jenkins-job (Maven Project)
 
 project name: deploy on container using ansible
- go to Jenkins --> new item --> project name --> maven project --> ok
- git --> git url --> branch : */main 
+go to Jenkins --> new item --> project name --> maven project --> ok
+git --> git url --> branch : */main 
 Build --> pom.xml --> Goals : clean install package
- Post build action --> send build artifacts over SSH
+Post build action --> send build artifacts over SSH
 Source file : dockerfile,hosts,create-simple-devops-project.yml,create-simple-devops-image.yml
 Remote directory : /opt/docker   (files will deploy here)
 # Applay and save
@@ -210,9 +215,9 @@ ansible-playbook -i /opt/docker/host /opt/docker/create-simple-devops-image.yml 
 # Apply  and save
 # Build success
 Go to ansible server --> docker image --> webapp.war  (it will add new file)
- Go to docker server --> docker image -->  it will show the list
- After creating the images automatically deleted images from the docker server but it will be there on ansible server
- Go to the dockerhub and give refresh the dockerhub
+Go to docker server --> docker image -->  it will show the list
+After creating the images automatically deleted images from the docker server but it will be there on ansible server
+Go to the dockerhub and give refresh the dockerhub
 Copy the docker public IP --> paste on google --> docker public IP:8080/webapp --> we can the output of source code
 Webhook configuration
 Go to Jenkins --> select job --> configure
