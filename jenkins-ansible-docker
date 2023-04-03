@@ -20,8 +20,7 @@ PLUGINS :-  GITHUB ,MAVEN INVOKER ,MAVEN INTEGRATION ,PUBLISH OVER SSH
 			 JENKINS
 
 
-# amazon-linux-extras
-# amazon-linux-extras install java11openjdk
+# 
 # java –version
 
 	Vi .bash_profile      
@@ -78,18 +77,22 @@ export PATH=${M2_HOME}/bin:${PATH}
 # mvn –version
 # yum install git -y
 
-Ansible-installation ansible
+                                                                    ANSIBLE INSTALLATION
+
 
 # Sudo su –
 Change host name (hostname ansible-control-node)
 # Sudo su –
 # amazon-linux-extras install java-openjdk11 –y
 # java –version
+
 # vi /etc/ssh/sshd-config
 # authentication password yes (remove the # tag)
 # service sshd reload 
 
-# yum install ansible -y
+# yum install python3-pip
+  pip3 install ansible
+
 # Ansible –version
 ( if configure file is none at the time we have to create local host)
 ( mkdir /etc/ansible --> cd /ect/ansible --> vi hosts --> localhost <type and save> --> cat hosts)
