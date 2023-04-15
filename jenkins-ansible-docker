@@ -20,16 +20,15 @@ PLUGINS :-  GITHUB ,MAVEN INVOKER ,MAVEN INTEGRATION ,PUBLISH OVER SSH
 			                                     JENKINS
 
 
-# sudo yum install java-1.8.0-amazon-corretto-devel
-java -version
 
-sudo yum install java-11-amazon-corretto-devel
-java -version
+# sudo yum install java-11-amazon-corretto-devel
+   java -version
 
 sudo alternatives --config java
 
 find /usr/lib/jvm/java-11* | head -n 3
 /usr/lib/jvm/java-1.8.0-amazon-corretto.x86_64
+
 # java –version
 
 	Vi .bash_profile      
@@ -50,41 +49,57 @@ Jenkins ALL=(ALL) NOPASSWD:ALL  (under root)
 
 #  sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
 #  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+
 # yum install jenkins
+
 # service jenkins start
+
 # service jenkins status
+
 #http://yourserverpublicip:8080
+
 configer jenkins
 
                                                           MAVEN INSTALLING ON JENKINS
 
 # cd /opt/
+
 # wget https://dlcdn.apache.org/maven/maven-3/3.8.6/binaries/apache-maven-3.8.6-bin.tar.gz
+
 # tar -xf apache-maven-3.8.6-bin.tar.gz
+
 # mv apache-maven-3.8.6/ maven/
 
 Configure Apache Maven Environment
+
 # cd /etc/profile.d/
 
 # vim maven.sh
+
 # Apache Maven Environment Variables
 # MAVEN_HOME for Maven 1 - M2_HOME for Maven 2
 export M2_HOME=/opt/maven
 export PATH=${M2_HOME}/bin:${PATH}
 
 # chmod +x maven.sh
+
 # source /etc/profile.d/maven.sh
+
 # mvn –version
+
 # yum install git -y
 
                                                                     ANSIBLE INSTALLATION
 
 
 # sudo yum install java-11-amazon-corretto-devel
+
 # java –version
 
 # vi /etc/ssh/sshd-config
+
 # authentication password yes (remove the # tag)
+
 # service sshd reload 
 
 # yum install python3-pip
@@ -97,23 +112,51 @@ export PATH=${M2_HOME}/bin:${PATH}
 # vi /etc/sudoers
    ansadmin   ALL=(ALL)    NOPASSWD:ALL   (paste under root and save)
 
-# yum install docker –y
-# docker –version 
-# service docker start
-# service docker status
+# sudo yum update
+
+# sudo yum search docker
+
+# sudo yum info docker
+
+# sudo yum install docker
+
+# sudo yum install python3-pip
+
+# sudo pip3 install docker-compose 
+
+# sudo systemctl enable docker.service
+
+# sudo systemctl start docker.service
+
+# sudo systemctl status docker.service
+
+# docker --version
+
+# docker compose --version
+
+
+
 # useradd dockeradmin
+
 # passwd dockeradmin
     new password : ansadmin
     conform password : ansadmin
+
 # usermod -aG docker dockeradmin
 
 # cd /opt
+
 # mkdir docker
+
 # chown –R ansadmin:ansadmin /opt/docker
+
 # chown –R ansadmin:ansadmin /etc/ansible/hosts
+
 # vi /etc/ansible/hosts
 ( remove # this is the default ansible hosts file )
+
 # [all_hosts]
+
 # docker server IP address  (:wq!)
 
                                                   # password less connection-beetween ansible and docker instance
@@ -122,16 +165,22 @@ export PATH=${M2_HOME}/bin:${PATH}
 
 # ssh-keygen
    ls –al
+
 # cd .ssh
+
 # ssh-copy-id ansadmin@(docker IP)
    yes and give password
    number of keys added : 1
+
 # cd..
+
 # ssh ansadmin@docker IP  (docker will connected with the ansible)
        exit (again it will came to ansible server)
+
 # ssh-copy-id localhost
 (yes and give password)
      added one key (that is localhost)
+
 # ansible all –m ping   (it will ping successfully )
 
 
@@ -139,21 +188,49 @@ export PATH=${M2_HOME}/bin:${PATH}
 
 # sudo yum install java-11-amazon-corretto-devel
       java –version
+
 # vi /etc/ssh/sshd-config
       authentication password yes (remove the # tag)
+
 # service sshd reload
+
 # vi /ete/sudoers
    ansadmin ALL=(ALL) NOPASSWD:ALL
-# yum install docker –y
-   docker --version
-# service docker start
-# service docker status
+
+# sudo yum update
+
+# sudo yum search docker
+
+# sudo yum info docker
+
+# sudo yum install docker
+
+# sudo yum install python3-pip
+
+# sudo pip3 install docker-compose 
+
+# sudo systemctl enable docker.service
+
+# sudo systemctl start docker.service
+
+# sudo systemctl status docker.service
+
+# docker --version
+
+# docker compose --version
+
+
+
+
         
 	Create a user called dockeradmin
 
 # useradd ansadmin
+
 # passwd ansadmin
+
 # new password : ansadmin
+
 # conform password : ansadmin
 
 # usermod -aG docker ansadmin
